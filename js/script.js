@@ -34,13 +34,17 @@ $(document).ready(
     // Ciclo su tutti gli studenti e stampo per ognuno nome e cognome
     for (var i = 0; i < arrayStudenti.length; i++) {
       var singoloStudente = arrayStudenti[i];
-      console.log(singoloStudente.Nome);
-      console.log(singoloStudente.Cognome);
+      console.log("Nome: " + singoloStudente.Nome);
+      console.log("Cognome: " + singoloStudente.Cognome);
     };
-
-
 
     // Do la possibilità all’utente attraverso 3 prompt di
     // aggiungere un nuovo oggetto studente inserendo nell’ordine: nome, cognome e età.
+    var nuovoNome = prompt("dimmi il tuo Nome");
+    var nuovoCognome = prompt("dimmi il tuo Cognome");
+    var nuovaEta = parseInt(prompt("dimmi la tua età"));
+
+    arrayStudenti.push({"Nome": nuovoNome, "Cognome": nuovoCognome, "Età": nuovaEta});
+    console.log(arrayStudenti);
   }
 );

@@ -1,5 +1,8 @@
 $(document).ready(
   function (){
+    var source = document.getElementById("entry-template").innerHTML;
+    var template = Handlebars.compile(source);
+
     // - Creo un oggetto che descriva uno studente con le seguenti proprietà: nome, cognome e età.
     var objStudente = {
       "Nome" :"Marco",
@@ -10,6 +13,10 @@ $(document).ready(
     // Stampo a schermo attraverso il for in tutte le proprietà.
     for (var key in objStudente) {
       console.log("Chiave: " + key + " - Valore: " + objStudente[key]);
+      //stampo su html con handlebars
+      var oggettoStudente = { oggettoStudente: "Chiave: " + key + " - Valore: " + objStudente[key] };
+      var oggettoStudenteHtml = template(oggettoStudente);
+      $('.oggetto_studente').append(oggettoStudenteHtml);
     };
 
     // Creo un array di oggetti di studenti.
@@ -36,6 +43,10 @@ $(document).ready(
       var singoloStudente = arrayStudenti[i];
       console.log("Nome: " + singoloStudente.Nome);
       console.log("Cognome: " + singoloStudente.Cognome);
+      //stampo su html con handlebars
+      var studenti = { studenti: "Nome: " + singoloStudente.Nome + " Cognome: " + singoloStudente.Cognome};
+      var studentiHtml = template(studenti);
+      $('.studenti').append(studentiHtml);
     };
 
     // Do la possibilità all’utente attraverso 3 prompt di
@@ -46,5 +57,9 @@ $(document).ready(
 
     arrayStudenti.push({"Nome": nuovoNome, "Cognome": nuovoCognome, "Età": nuovaEta});
     console.log(arrayStudenti);
+    //stampo su html con handlebars
+    var nuovoStudente = { nuovoStudente: "Nome: " + nuovoNome + " Cognome: " + nuovoCognome};
+    var nuovoStudenteHtml = template(nuovoStudente);
+    $('.nuovo_studente').append(nuovoStudenteHtml);
   }
 );
